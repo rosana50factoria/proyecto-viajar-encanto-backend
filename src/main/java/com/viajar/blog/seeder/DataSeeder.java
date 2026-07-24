@@ -82,6 +82,7 @@ public class DataSeeder implements CommandLineRunner {
                                 "callejuelas vacías mientras el mar…")
             .publishDate(new Date())
             .status(PaisFilter.ESPAÑA)
+            .image("https://images.unsplash.com/photo-1545411845-09d0638b8563?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
             .user(userRepository.findByName("user1"))
             .build();
 
@@ -93,6 +94,7 @@ public class DataSeeder implements CommandLineRunner {
                                 "más acogedor del mundo si se acompaña")
             .publishDate(new Date())
             .status(PaisFilter.PARIS)
+            .image("https://images.unsplash.com/photo-1703178132715-f9e5c0e26934?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
             .user(userRepository.findByName("user2"))
             .build();
 

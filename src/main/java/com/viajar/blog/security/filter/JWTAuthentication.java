@@ -40,7 +40,9 @@ public class JWTAuthentication extends UsernamePasswordAuthenticationFilter {
      public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            //Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            //¿se le pasa el email desde front end? porque se autentifica por username y password
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
             return customAuthenticationManager.authenticate(authentication);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
@@ -60,6 +62,8 @@ public class JWTAuthentication extends UsernamePasswordAuthenticationFilter {
         //.sign(Algorithm.HMAC512("asdffg"));
         .sign(Algorithm.HMAC512(secret));
 
+        //he tenido que añadir esto porque no llegaba el header con el token
+        response.addHeader("Access-Control-Expose-Headers", "Authorization");
         response.addHeader("Authorization", "Bearer " + token);
     }
 

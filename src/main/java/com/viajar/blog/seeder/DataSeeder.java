@@ -46,27 +46,27 @@ public class DataSeeder implements CommandLineRunner {
         if(userRepository.count() == 0){
             User admin = User.builder()
             .name("admin")
-            .email("345677239L")
+            .email("rosa@gmail.com")
             //.phone(345677239L)
-            .username("admin")
+            //.username("admin")
             .password(bCryptPasswordEncoder.encode("admin"))
             .roles(Set.of(roleRepository.findByName("user")))
             .build();
 
             User lola = User.builder()
             .name("user1")
-            .email("345677999L")
+            .email("lola@gmail.com")
             //.phone(345677999L)
-            .username("lola")
+            //.username("lola")
             .password(bCryptPasswordEncoder.encode("123456"))
             .roles(Set.of(roleRepository.findByName("user")))
             .build();
 
             User ana = User.builder()
             .name("user2")
-            .email("375677990L")
+            .email("ana@gmail.com")
             //.phone(375677990L)
-            .username("ana")
+            //.username("ana")
             .password(bCryptPasswordEncoder.encode("123456"))
             .roles(Set.of(roleRepository.findByName("user")))
             .build();

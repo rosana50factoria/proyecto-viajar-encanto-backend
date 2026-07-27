@@ -41,8 +41,8 @@ public class User {
     private String email;
 
      //Se han aumentado los atributos username y password para basic auth.
-    @Column(nullable = false, unique = true)
-    private String username;
+    //@Column(nullable = false, unique = true)
+    //private String username;
 
     @Column(nullable = false)
     private String password;

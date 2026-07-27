@@ -9,6 +9,7 @@ import com.viajar.blog.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
     public User findByName(String name);
-    public Optional<User> findByUsername(String name);
+    //public Optional<User> findByUsername(String name);
+    public Optional<User> findByEmail(String email);
 
 }

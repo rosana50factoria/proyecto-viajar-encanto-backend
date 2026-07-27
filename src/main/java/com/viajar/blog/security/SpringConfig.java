@@ -61,6 +61,7 @@ public class SpringConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()   // <-- clave para el preflight
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/publicacion").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users/register").permitAll()
                         .anyRequest().authenticated())
                 // autentificacion básica
                 // .httpBasic(Customizer.withDefaults())

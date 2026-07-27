@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.viajar.blog.dto.RegisterRequest;
+import com.viajar.blog.dto.RegisterResponse;
 import com.viajar.blog.entity.User;
 import com.viajar.blog.service.UserService;
 
@@ -27,10 +29,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    //@PostMapping
-    // public ResponseEntity<User> createUser(@Valid @RequestBody User user, @RequestParam List<Integer> roleIds){
-    //     return new ResponseEntity<>(userService.createUser(user, roleIds), HttpStatus.CREATED);
-    // }
+    @PostMapping("/register")
+    public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request) {
+        RegisterResponse response = userService.createUser(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable int id){

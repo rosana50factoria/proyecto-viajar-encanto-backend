@@ -15,6 +15,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.viajar.blog.entity.User;
 import com.viajar.blog.security.CustomAuthenticationManager;
+import com.viajar.blog.security.UserDetail;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -55,9 +56,13 @@ public class JWTAuthentication extends UsernamePasswordAuthenticationFilter {
         .map(grantedAuthority -> grantedAuthority.getAuthority().replace("ROLE_", ""))
         .collect(Collectors.toList());
 
+        UserDetail userDetail = (UserDetail) authResult.getPrincipal();
+        String name = userDetail.getUser().getName();
+
         String token = JWT.create()
         .withSubject(authResult.getName())
         .withClaim("roles", roles)
+        .withClaim("name", name)
         .withExpiresAt(new Date(System.currentTimeMillis() + (5 * 60000))) // 5 min
         //.sign(Algorithm.HMAC512("asdffg"));
         .sign(Algorithm.HMAC512(secret));

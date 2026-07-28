@@ -9,11 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.viajar.blog.entity.User;
 
 public class UserDetail implements UserDetails{
-
     private final User user;
 
     public UserDetail(User user){
         this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override
@@ -33,9 +36,5 @@ public class UserDetail implements UserDetails{
         //return user.getUsername();
         return user.getEmail();
     }
-
-    
-    
-
 
 }

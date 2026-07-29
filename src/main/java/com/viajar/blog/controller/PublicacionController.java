@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -43,5 +43,11 @@ public class PublicacionController {
     public ResponseEntity<Publicacion> getPublicacionById(@PathVariable int id){
         Publicacion publicacion = publicacionService.getPublicacionById(id);
         return new ResponseEntity<>(publicacion, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable int id) {
+        publicacionService.deletePublicacionById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

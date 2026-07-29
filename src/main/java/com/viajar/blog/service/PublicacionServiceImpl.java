@@ -33,6 +33,13 @@ public class PublicacionServiceImpl implements PublicacionService {
         }
         return publicacion.get();
     }
+
+    @Override
+    public void deletePublicacionById(int id) {
+      Publicacion publicacion = getPublicacionById(id);
+      
+        publicacionRepository.delete(publicacion);
+    }
 }
 
 

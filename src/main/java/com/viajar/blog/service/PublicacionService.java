@@ -9,4 +9,6 @@ public interface PublicacionService {
     public List<Publicacion> getAllPublicacion(); 
 
     public Publicacion getPublicacionById(int id);
+
+    public void deletePublicacionById(int id);
 }

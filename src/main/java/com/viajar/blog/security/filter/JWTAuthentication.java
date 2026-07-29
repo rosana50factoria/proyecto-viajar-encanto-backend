@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
@@ -44,6 +45,8 @@ public class JWTAuthentication extends UsernamePasswordAuthenticationFilter {
             //Authentication authentication = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
             //¿se le pasa el email desde front end? porque se autentifica por username y password
             Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+
+            //SecurityContextHolder.getContext().setAuthentication(authentication);
             return customAuthenticationManager.authenticate(authentication);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());

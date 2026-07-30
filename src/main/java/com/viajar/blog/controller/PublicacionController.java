@@ -5,10 +5,11 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,14 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import com.viajar.blog.dto.PublicacionRequest;
 import com.viajar.blog.entity.Publicacion;
 import com.viajar.blog.entity.User;
-import com.viajar.blog.security.UserDetail;
 //import com.mundotech.newspaper.dto.request.ArticleDto;
 //import com.mundotech.newspaper.dto.response.ArticleInfoDto;
 //import com.mundotech.newspaper.entity.ArticleStatus;
@@ -61,20 +57,22 @@ public class PublicacionController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Publicacion> crearPublicacion(
-            @RequestBody PublicacionRequest request, Principal principal) {
-        System.out.println(principal.getName());
+            @ModelAttribute PublicacionRequest request, Principal principal) {
+        
         User usuario = userRepository.findByEmail(principal.getName()).get();
         Publicacion nueva = publicacionService.crearPublicacion(request, usuario);
         return ResponseEntity.ok(nueva);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Publicacion> actualizarPublicacion(
             @PathVariable int id,
-            @RequestBody PublicacionRequest request) {
-        Publicacion actualizada = publicacionService.actualizarPublicacion(id, request);
+            @ModelAttribute PublicacionRequest request, Principal principal) {
+         
+        User usuario = userRepository.findByEmail(principal.getName()).get();
+        Publicacion actualizada = publicacionService.actualizarPublicacion(id, request,usuario);
         return ResponseEntity.ok(actualizada);
     }
 }

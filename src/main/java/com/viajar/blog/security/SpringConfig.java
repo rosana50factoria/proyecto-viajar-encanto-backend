@@ -62,6 +62,7 @@ public class SpringConfig {
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/publicacion").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/users/register").permitAll()
+                        .requestMatchers("/uploads/**").permitAll() // ← añadir esto
                         .anyRequest().authenticated())
                 // autentificacion básica
                 // .httpBasic(Customizer.withDefaults())

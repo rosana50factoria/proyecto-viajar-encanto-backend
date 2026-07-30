@@ -16,6 +16,6 @@ public interface PublicacionService {
 
     public Publicacion crearPublicacion(PublicacionRequest request, User user);
 
-    public Publicacion actualizarPublicacion(int id, PublicacionRequest request);
+    public Publicacion actualizarPublicacion(int id, PublicacionRequest request, User user);
     
 }

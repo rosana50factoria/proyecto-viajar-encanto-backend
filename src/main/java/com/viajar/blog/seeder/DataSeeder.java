@@ -45,7 +45,7 @@ public class DataSeeder implements CommandLineRunner {
 
         if(userRepository.count() == 0){
             User admin = User.builder()
-            .name("admin")
+            .name("Rosa Naharro")
             .email("rosa@gmail.com")
             //.username("admin")
             .password(bCryptPasswordEncoder.encode("admin"))
@@ -53,7 +53,7 @@ public class DataSeeder implements CommandLineRunner {
             .build();
 
             User lola = User.builder()
-            .name("user1")
+            .name("Lola Gutierrez")
             .email("lola@gmail.com")
             //.username("lola")
             .password(bCryptPasswordEncoder.encode("123456"))
@@ -61,7 +61,7 @@ public class DataSeeder implements CommandLineRunner {
             .build();
 
             User ana = User.builder()
-            .name("user2")
+            .name("Ana Torres")
             .email("ana@gmail.com")
             //.username("ana")
             .password(bCryptPasswordEncoder.encode("123456"))
@@ -78,9 +78,9 @@ public class DataSeeder implements CommandLineRunner {
                                 "tiempo más amable. Caminar por las\n" + //
                                 "callejuelas vacías mientras el mar…")
             .publishDate(new Date())
-            .status(PaisFilter.ESPAÑA)
+            .pais(PaisFilter.ESPAÑA)
             .image("https://images.unsplash.com/photo-1545411845-09d0638b8563?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-            .user(userRepository.findByName("user1"))
+            .user(userRepository.findByName("Lola Gutierrez"))
             .build();
 
             Publicacion p2 = Publicacion.builder()
@@ -90,33 +90,13 @@ public class DataSeeder implements CommandLineRunner {
                                 "es descubrir que el gris puede ser el color\n" + //
                                 "más acogedor del mundo si se acompaña")
             .publishDate(new Date())
-            .status(PaisFilter.PARIS)
+            .pais(PaisFilter.PARIS)
             .image("https://images.unsplash.com/photo-1703178132715-f9e5c0e26934?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-            .user(userRepository.findByName("user2"))
+            .user(userRepository.findByName("Ana Torres"))
             .build();
 
             publicacionRepository.saveAll(List.of(p1,p2));
         }
-
-
-        // if (dogRepository.count() == 0) {
-        //     Dog firulais = Dog.builder()
-        //     .name("Firulais")
-        //     .age(2)
-        //     .isAdopted(false)
-        //     .user(userRepository.findByName("user_employee"))
-        //     .build();
-
-        //     Dog pipo = Dog.builder()
-        //     .name("Pipo")
-        //     .age(3)
-        //     .isAdopted(false)
-        //     .user(userRepository.findByName("user_employee"))
-        //     .build();
-
-        //     dogRepository.saveAll(List.of(firulais, pipo));
-
-        // }
 
     }
 

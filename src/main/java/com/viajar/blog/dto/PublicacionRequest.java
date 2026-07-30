@@ -9,6 +9,6 @@ import lombok.Data;
 public class PublicacionRequest {
     private String title;
     private String content;
-    private PaisFilter status;
+    private PaisFilter pais;
     private MultipartFile image; // nuevo
 }

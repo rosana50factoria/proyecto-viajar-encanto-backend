@@ -43,7 +43,7 @@ public class Publicacion {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PaisFilter status;
+    private PaisFilter pais;
 
     @Column(nullable = true)
     private String image;

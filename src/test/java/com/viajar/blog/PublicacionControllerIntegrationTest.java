@@ -81,12 +81,12 @@ public class PublicacionControllerIntegrationTest {
         return result.getResponse().getHeader("Authorization");
     }
 
-    private Publicacion crearPublicacion(User autor, PaisFilter status) {
+    private Publicacion crearPublicacion(User autor, PaisFilter pais) {
         Publicacion publicacion = new Publicacion();
         publicacion.setTitle("Publicación de prueba");
         publicacion.setContent("Contenido de prueba");
         publicacion.setPublishDate(new Date());
-        publicacion.setStatus(status);
+        publicacion.setPais(pais);
         publicacion.setUser(autor);
         return publicacionRepository.save(publicacion);
     }

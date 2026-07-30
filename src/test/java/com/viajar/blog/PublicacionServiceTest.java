@@ -49,7 +49,7 @@ class PublicacionServiceTest {
         publicacion.setId(1);
         publicacion.setTitle("Un fin de semana en París");
         publicacion.setContent("Contenido de prueba sobre el viaje...");
-        publicacion.setStatus(PaisFilter.PARIS);
+        publicacion.setPais(PaisFilter.PARIS);
     }
 
     @Test
@@ -59,7 +59,7 @@ class PublicacionServiceTest {
         Publicacion otra = new Publicacion();
         otra.setId(2);
         otra.setTitle("Escapada a Londres");
-        otra.setStatus(PaisFilter.LONDRES);
+        otra.setPais(PaisFilter.LONDRES);
 
         when(publicacionRepository.findAll()).thenReturn(Arrays.asList(publicacion, otra));
 

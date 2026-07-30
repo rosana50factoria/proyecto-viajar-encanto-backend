@@ -58,7 +58,7 @@ public class PublicacionServiceImpl implements PublicacionService {
         Publicacion publicacion = new Publicacion();
         publicacion.setTitle(request.getTitle());
         publicacion.setContent(request.getContent());
-        publicacion.setStatus(request.getStatus());
+        publicacion.setPais(request.getPais());
         publicacion.setPublishDate(new Date());
         publicacion.setUser(user);
 
@@ -95,7 +95,7 @@ public class PublicacionServiceImpl implements PublicacionService {
 
         publicacion.setTitle(request.getTitle());
         publicacion.setContent(request.getContent());
-        publicacion.setStatus(request.getStatus());
+        publicacion.setPais(request.getPais());
 
         if (request.getImage() != null && !request.getImage().isEmpty()) {
             String imageUrl = guardarImagen(request.getImage());
